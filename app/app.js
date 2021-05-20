@@ -1,9 +1,8 @@
 var http = require('http');
 var port = process.env.port || 1337;
 http.createServer(function (req, res) {
-  if(req.url === '/app/')
+  if(req.url == '/app/')
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.statusCode = 200;
   res.end('Hello World\n');
 }).listen(port);
 
@@ -14,7 +13,7 @@ http.createServer(function (req, res) {
 var bodyParser = require("body-parser"),
 express        = require("express"),
 axios          = require('axios'),
-app            = express.Router();
+app            = express();
 path           = require('path');
 pythonShell = require('python-shell');
 //router = express.Router();
