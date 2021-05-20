@@ -1,17 +1,16 @@
-const http = require('http');
-
-const hostname = '127.0.0.1';
-const port = 3000;
-
-const server = http.createServer((req, res) => {
+var http = require('http');
+var port = process.env.port || 1337;
+http.createServer(function (req, res) {
+  if(req.url === '/app/')
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
+  res.end('Hello World\n');
+}).listen(port);
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+
+// server.listen(port, hostname, () => {
+//   console.log(`Server running at http://${hostname}:${port}/`);
+// });
 var bodyParser = require("body-parser"),
 express        = require("express"),
 axios          = require('axios'),
