@@ -16,6 +16,7 @@ var bodyParser = require("body-parser"),
 express        = require("express"),
 axios          = require('axios'),
 app            = express.Router();
+path           = require('path');
 pythonShell = require('python-shell');
 //router = express.Router();
 var options = {
@@ -45,7 +46,7 @@ pythonShell.run('/python_server/app.py', options, function (err, data) {
 module.exports = router;
 
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", function(req, res){
